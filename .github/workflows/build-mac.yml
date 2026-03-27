@@ -1,0 +1,34 @@
+name: Build Mac App
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Nativefier
+        run: npm install -g nativefier
+
+      - name: Build Mac App
+        run: |
+          nativefier --name "FRMSPSH" \
+          --platform "mac" \
+          --arch "universal" \
+          --internal-urls ".*" \
+          "https://frmspsh-dev.racetimermorocco.com"
+
+      - name: Compress App
+        run: zip -r FRMSPSH-Mac.zip FRMSPSH-darwin-*
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FRMSPSH-Mac-Version
+          path: FRMSPSH-Mac.zip
