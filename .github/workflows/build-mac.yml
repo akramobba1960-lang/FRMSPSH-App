@@ -18,12 +18,13 @@ jobs:
 
       - name: Build Mac App
         run: |
-          nativefier --name "FRMSPSH" \
+          nativefier "https://frmspsh-dev.racetimermorocco.com/en/login" \
+          --name "FRMSPSH" \
           --platform "mac" \
           --arch "universal" \
-          --maximize \
+          --full-screen \
           --internal-urls ".*" \
-          "https://frmspsh-dev.racetimermorocco.com/en/login"
+          --inject "offline-check.js"
 
       - name: Compress App
         run: zip -r FRMSPSH-Mac.zip FRMSPSH-darwin-*
