@@ -21,8 +21,9 @@ jobs:
           nativefier --name "FRMSPSH" \
           --platform "mac" \
           --arch "universal" \
+          --maximize \
           --internal-urls ".*" \
-          "https://frmspsh-dev.racetimermorocco.com"
+          "https://frmspsh-dev.racetimermorocco.com/en/login"
 
       - name: Compress App
         run: zip -r FRMSPSH-Mac.zip FRMSPSH-darwin-*
