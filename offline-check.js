@@ -27,15 +27,15 @@ setInterval(async () => {
         document.body.style.filter = "none";
         document.body.style.pointerEvents = "auto";
         modal.remove();
-        window.location.reload(); 
+        window.location.reload();
     }
 }, 5000);
 
-// CUSTOM CLOSE BUTTON (TOP CENTER)
+// --- CUSTOM CLOSE BUTTON (TOP LEFT) ---
 const closeBtn = document.createElement('div');
 closeBtn.innerHTML = '✕';
-closeBtn.style = "position:fixed; top:10px; left:50%; transform:translateX(-50%); width:40px; height:40px; background:rgba(0,0,0,0.3); color:white; display:flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; z-index:1000000; font-family:sans-serif; font-size:22px; font-weight:bold; transition: 0.3s; border: 1px solid rgba(255,255,255,0.2);";
-closeBtn.onmouseover = () => { closeBtn.style.background = "red"; closeBtn.style.transform = "translateX(-50%) scale(1.1)"; };
-closeBtn.onmouseout = () => { closeBtn.style.background = "rgba(0,0,0,0.3)"; closeBtn.style.transform = "translateX(-50%) scale(1)"; };
-closeBtn.onclick = () => { if (confirm("Close FRMSPSH?")) window.close(); };
+closeBtn.style = "position:fixed; top:10px; left:50%; transform:translateX(-50%); width:40px; height:40px; background:rgba(0,0,0,0.3); color:white; display:flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; z-index:1000000; font-family:sans-serif; font-size:22px; font-weight:bold; transition: 0.3s; border: 1px solid rgba(255,255,255,0.2);"
+closeBtn.onmouseover = () => closeBtn.style.background = "red";
+closeBtn.onmouseout = () => closeBtn.style.background = "rgba(0,0,0,0.3)";
+closeBtn.onclick = () => window.close();
 document.documentElement.appendChild(closeBtn);
